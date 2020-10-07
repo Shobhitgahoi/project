@@ -1,20 +1,12 @@
 package pages;
 
-import java.awt.Dimension;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import javax.swing.event.SwingPropertyChangeSupport;
 
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import base.BaseTest;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.HidesKeyboard;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
