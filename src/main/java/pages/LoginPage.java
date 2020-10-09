@@ -1,9 +1,6 @@
 package pages;
 
-import java.io.IOException;
-
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.HidesKeyboard;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 
@@ -31,12 +28,27 @@ public class LoginPage extends BasePage<LoginPage> {
 		super(driver);
 	}
 	
-	//region login methods
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *  login 
+	 * @return LoginPage
+	 * @tag  @return
+	 */
 	public LoginPage selectSigninButton() {
 		clickAfterFindingElement(ALLOW_SIGNIN);
 		return this;
 	}
 	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Set Email Address
+	 * @return LoginPage
+	 * @tag  @return
+	 * @tag  @throws Exception
+	 */
 	public LoginPage setEmailAddress() throws Exception {
 		waitForElementToBeDisplayed(EMAIL_ADDRESS);
 		clickAfterFindingElement(EMAIL_ADDRESS);
@@ -45,11 +57,26 @@ public class LoginPage extends BasePage<LoginPage> {
 		return this;
 	}
 	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Click on Continue button
+	 * @return LoginPage
+	 * @tag  @return
+	 */
 	public LoginPage selectContinue() {
 		clickAfterFindingElement(CONTINUE_BTN);
 		return this;
 	}
 	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Enter the password
+	 * @return LoginPage
+	 * @tag  @return
+	 * @tag  @throws Exception
+	 */
 	public LoginPage setPassword() throws Exception {
 		waitForElementToBeDisplayed(PASSWORD_FIELD);
 		String password=excelreader.readingData("sheet1",1, 1);
@@ -57,11 +84,18 @@ public class LoginPage extends BasePage<LoginPage> {
 		return this;
 	}
 	
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 * Click on Sign in button
+	 * @return ProductSearchPage
+	 * @tag  @return
+	 */
 	public ProductSearchPage selectSignIn() {
 		clickAfterFindingElement(SIGN_IN_BTN);
 		return new ProductSearchPage(getDriver());
 	}
 	
-	//endregion login methods
 
 }

@@ -1,17 +1,25 @@
 package pages;
 
 import java.util.concurrent.TimeUnit;
-
+import org.testng.*;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.offset.PointOption;
 
+/**
+ * @author Shobhit Gahoi
+ *
+ * 09-Oct-2020
+ */
+/**
+ * @author Shobhit Gahoi
+ *
+ * 09-Oct-2020
+ */
 public class BasePage<T extends BasePage<T>> {
 	private AppiumDriver driver;
 	
@@ -24,6 +32,13 @@ public class BasePage<T extends BasePage<T>> {
 		return this.driver;
 	}
 	
+	/**
+	 * @author Shobhit Gahoi
+	 *This method is for click on a Element after locating it
+	 *
+	 * @return void
+	 * @tag  @param mobileElement
+	 */
 	public void clickAfterFindingElement(MobileElement mobileElement) {
 		for(int i=0;i<5;i++) {
 			try {
@@ -35,6 +50,9 @@ public class BasePage<T extends BasePage<T>> {
 			}
 		}
 	}
+	
+	
+	//Getting the text from a mobile element
 	public String getTextAfterFindingElement(MobileElement mobileElement) {
 		String element = null;
 		for(int i=0;i<5;i++) {
@@ -50,9 +68,17 @@ public class BasePage<T extends BasePage<T>> {
 		
 	}
 	
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	This method is for set the implicit wait
+	 * @return void
+	 * @tag  @param mobileElement
+	 * @tag  @throws Exception
+	 */
 	public void waitForElementToBeDisplayed(MobileElement mobileElement) throws Exception {
-		//WebDriverWait wait=new WebDriverWait(getDriver(),5);
-		//wait.until(ExpectedConditions.elementToBeClickable(mobileElement));
+		
 		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Thread.sleep(10000);
 		mobileElement.isDisplayed();
@@ -67,11 +93,19 @@ public class BasePage<T extends BasePage<T>> {
 		mobileElement.sendKeys(value);
 	}
 	
+	// Clicking on a particular element
 	private void fastClick(MobileElement mobileElement,int timeOutInSeconds) {
 		mobileElement.click();
 	}
 	
-	//Scrolling method
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 * Method for Scrolling 
+	 * @return void
+	 * @tag  @param times
+	 */
 	public void scrollDown(int times) {
 		for(int i=0;i< times;i++) {
 			org.openqa.selenium.Dimension dim= getDriver().manage().window().getSize();
@@ -87,7 +121,15 @@ public class BasePage<T extends BasePage<T>> {
 	}
 	}
 
-	//rotation methods
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 * Rotation methods 1. Rotating Landscape 2. Rotating Portrait
+	 * @return void
+	 * @tag  @param times
+	 */
+	
 	public T rotateToLandscape() {
 		try {
 			getDriver().rotate(ScreenOrientation.LANDSCAPE);
@@ -96,6 +138,8 @@ public class BasePage<T extends BasePage<T>> {
 		}
 		return (T)this;
 	}
+	
+	
 	public T rotateToPortrait() {
 		try {
 			getDriver().rotate(ScreenOrientation.PORTRAIT);

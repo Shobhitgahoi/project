@@ -1,7 +1,5 @@
 package pages;
 
-import java.io.IOException;
-
 import org.testng.Assert;
 
 import io.appium.java_client.AppiumDriver;
@@ -43,7 +41,15 @@ public class ProductSearchPage extends BasePage<ProductSearchPage> {
 		super(driver);
 	}
 	
-	//region product search methods
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Search the product
+	 * @return ProductSearchPage
+	 * @tag  @return
+	 * @tag  @throws Exception
+	 */
 	public ProductSearchPage searchProduct() throws Exception {
 		waitForElementToBeDisplayed(SEARCH_PRODUCT_FIELD);
 		clickAfterFindingElement(SEARCH_PRODUCT_FIELD);
@@ -52,17 +58,43 @@ public class ProductSearchPage extends BasePage<ProductSearchPage> {
 		return this;
 	}
 
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Select the product
+	 * @return ProductSearchPage
+	 * @tag  @return
+	 */
 	public ProductSearchPage selectProduct() {
 		clickAfterFindingElement(SELECT_PRODUCT);
 		return this;
 	}
 	
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *
+	 * @return ProductSearchPage
+	 * @tag  @return
+	 * @tag  @throws Exception
+	 */
 	public ProductSearchPage selectSearchedProduct() throws Exception {
 		waitForElementToBeDisplayed(SELECT_SEARCHED_PRODUCT);
 		clickAfterFindingElement(SELECT_SEARCHED_PRODUCT);
 		return this;
 	}
 	
+	
+	/**
+	 * @author Shobhit Gahoi
+	 *
+	 *	Validate the product value vs Check out product
+	 * @return ProductSearchPage
+	 * @tag  @return
+	 * @tag  @throws Exception
+	 */
 	public ProductSearchPage validateProductScreenValuesVsCheckout()throws Exception {
 		String productname=getTextAfterFindingElement(PRODUCT_NAME);
 		System.out.println(productname);
@@ -74,6 +106,6 @@ public class ProductSearchPage extends BasePage<ProductSearchPage> {
 		Assert.assertEquals(getTextAfterFindingElement(CHECKOUT_PRODUCT_NAME), productname);
 		return this;
 	}
-	//endregion product search methods
+	
 }
 	

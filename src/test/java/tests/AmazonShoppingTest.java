@@ -1,15 +1,22 @@
 package tests;
 
-import java.io.IOException;
 
 import org.testng.annotations.Test;
+
+import utilities.Utility;
+import com.relevantcodes.extentreports.LogStatus;
 
 import base.BaseTest;
 import pages.LoginPage;
 
 public class AmazonShoppingTest extends BaseTest{
-	//Main test for login, adding product and validation
-	@Test
+	
+	/*Test for login, 
+	 * adding product and 
+	 * validation
+	 * @author Shobhit Gahoi
+	*/
+	@Test(priority=1,enabled=true)
 	public void validateAmazonProductAdded() throws Exception {
 		new LoginPage(driver)
 		.selectSigninButton()
@@ -22,7 +29,8 @@ public class AmazonShoppingTest extends BaseTest{
 		.selectSearchedProduct()
 		.validateProductScreenValuesVsCheckout()
 		.rotateToPortrait();
-		
+		testReporter.log(LogStatus.PASS, "Product Shipped Successfully...",  testReporter.addScreenCapture(Utility.captureScreenshot(driver, screenShotPath)));
+
 	}
 
 	
